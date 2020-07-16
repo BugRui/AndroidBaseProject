@@ -1,0 +1,78 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 应用的主要色调，ActionBar Toolbar 默认使用该颜色 -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- 应用的主要暗色调，状态栏默认使用该颜色 -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- 应用的强调色，CheckBox RadioButton Switch 等一般控件的选中效果默认采用该颜色 -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- 窗口背景颜色 -->
+        <item name="android:windowBackground">@color/colorAppBackground</item>
+        <!-- activity进出动画-->
+        <item name="android:windowAnimationStyle">@style/ActivityOpenAndCloseAnimation</item>
+        <!-- 关闭 RecyclerView ScrollView ViewPager 水波纹效果 -->
+        <item name="android:overScrollMode">never</item>
+        <!-- 解决 Android 5.1 及以上版本 Button 英文字符串自动变大写的问题 -->
+        <item name="android:textAllCaps">false</item>
+        <!-- 默认文本颜色，Button、TextView 的文字颜色-->
+        <item name="android:textColor">@color/colorAppText</item>
+        <!-- 默认提示颜色，Button、TextView 的提示文字颜色 -->
+        <item name="android:textColorHint">@color/colorAppTextHint</item>
+    </style>
+
+    <style name="ActivityOpenAndCloseAnimation" parent="@android:style/Animation.Activity" >
+<!--        <item name="android:activityOpenEnterAnimation">@anim/activity_open_enter_animation</item>-->
+<!--        <item name="android:activityOpenExitAnimation">@anim/activity_open_exit_animation</item>-->
+<!--        <item name="android:activityCloseEnterAnimation">@anim/activity_close_enter_animation</item>-->
+<!--        <item name="android:activityCloseExitAnimation">@anim/activity_close_exit_animation</item>-->
+    </style>
+
+
+    <!--  弹口从底部弹出动画-->
+    <style name="WindowBottomAnimation" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/window_bottom_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/window_bottom_exit_anim</item>
+    </style>
+
+    <!--  弹口从顶部弹出动画-->
+    <style name="WindowScaleAnimation" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/window_scale_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/window_scale_exit_anim</item>
+    </style>
+
+    <style name="UILoadingProgressDialog" parent="@android:style/Theme.Dialog">
+        <!-- Dialog的windowFrame框为无 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 是否显示title -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 设置dialog的背景 -->
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 是否模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--        <item name="android:windowEnterAnimation">@anim/anim_loading_in</item>-->
+        <!--        <item name="android:windowExitAnimation">@anim/anim_loading_out</item>-->
+    </style>
+
+    <style name="UniversalDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!--分割线-->
+    <style name="viewLien">
+        <item name="android:background">#ededed</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+    </style>
+</resources>

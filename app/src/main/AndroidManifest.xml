@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bugrui.jetpackproject">
+
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" /> <!-- 允许程序禁用键盘锁 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许应用程序打开网络 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许应用程序访问WI-FI状态信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许应用程序访问网络状态 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 允许应用程序访问改变网络状态 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 允许应用程序访问更改无线网络状态 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 请求访问摄像设备 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 允许应用程序读取设备外部存储数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许应用程序把数据写入外部存储设备 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 允许应用程序初始化电话呼叫 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许应用程序访问电话状态 -->
+    <uses-permission android:name="android.permission.READ_SMS" /> <!-- 允许应用程序访问短信信息 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 允许应用程序访问精细的位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 允许应用程序访问简单的位置 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 读取联系人 -->
+
+    <application
+        android:name=".base.BasicApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:maxAspectRatio="2.4"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+
+        <!-- 适配华为刘海屏 -->
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.4" />
+
+        <!-- 适配小米刘海屏 -->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
+
+        <!--适配的基础屏幕-->
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="360" />
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="640" />
+
+
+        <!--7.0文件-->
+        <provider
+            android:name="com.bugrui.jetpackproject.common.CommonFileProvider"
+            android:authorities="com.bugrui.jetpackproject.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/common_file_provider" />
+        </provider>
+
+        <activity android:name=".pages.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 微信SDK分享需要 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="微信"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".pages.web.WebActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="web"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>
