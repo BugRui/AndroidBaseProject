@@ -5,8 +5,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
     signingConfigs {
         appSigning {
             keyAlias 'AppSigning'
@@ -15,6 +13,8 @@ android {
             storePassword '123456'
         }
     }
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.bugrui.jetpackproject"
         minSdkVersion 19
@@ -23,7 +23,23 @@ android {
         versionName "1.0"
         signingConfig signingConfigs.appSigning
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // 仅保留中文语种的资源
+        resConfigs 'zh'
+
+        // 仅保留 xxhdpi 图片资源（目前主流分辨率 1920 * 1080）
+        resConfig 'xxhdpi'
+
+        ndk {
+            // armeabi：万金油架构平台（占用率：0%）
+            // armeabi-v7a：曾经主流的架构平台（占用率：10%）
+            // arm64-v8a：目前主流架构平台（占用率：90%）
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
     }
+
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -36,6 +52,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.appSigning
         }
+    }
+
+    packagingOptions {
+        // 剔除这个包下的所有文件（除了签名信息）
+        exclude 'META-INF/*******'
     }
 
     android.applicationVariants.all { variant ->
